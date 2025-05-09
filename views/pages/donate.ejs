@@ -1,0 +1,124 @@
+<!-- views/pages/get-involved/donate.ejs -->
+<%- include('../partials/header') %>
+
+<style>
+  .account-popup {
+    background-color: #1b479e;
+    color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    display: none;
+    margin-top: 15px;
+  }
+
+  .account-popup i {
+    color: #fb8127;
+    margin-right: 8px;
+  }
+
+  .card-icon {
+    color: #fb8127;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+  }
+
+  .hero{
+    background-image: url(/images/support.png) ;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+</style>
+
+<section class="hero bg-primary text-white py-5 text-center">
+  <div class="container">
+    <h1 style="margin-top: 50px;" class="display-4">Support HLOVF</h1>
+    <p class="lead">Join us in empowering widows, orphans, and vulnerable communities.</p>
+  </div>
+</section>
+
+<section class="container py-5">
+  <h3 class="text-center mb-4">What Your Donation Supports</h3>
+  <div class="row text-center">
+    <div class="col-md-3 mb-4">
+      <div class="p-3 border rounded shadow-sm">
+        <i class="fas fa-home card-icon"></i>
+        <h5>Orphanage Homes</h5>
+        <p>Help us build and furnish safe homes for orphans across Nigeria.</p>
+      </div>
+    </div>
+    <div class="col-md-3 mb-4">
+      <div class="p-3 border rounded shadow-sm">
+        <i class="fas fa-house-user card-icon"></i>
+        <h5>Rent for Widows</h5>
+        <p>Provide secure shelter by paying rent for homeless widows.</p>
+      </div>
+    </div>
+    <div class="col-md-3 mb-4">
+      <div class="p-3 border rounded shadow-sm">
+        <i class="fas fa-briefcase card-icon"></i>
+        <h5>Women Empowerment</h5>
+        <p>Support small businesses run by women to lift families out of poverty.</p>
+      </div>
+    </div>
+    <div class="col-md-3 mb-4">
+      <div class="p-3 border rounded shadow-sm">
+        <i class="fas fa-graduation-cap card-icon"></i>
+        <h5>Education & Skills</h5>
+        <p>Enable orphans and youth with scholarships and training programs.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container py-5">
+  <h3 class="mb-4 text-center">Make a Donation</h3>
+  <form action="/donate" method="POST" id="donationForm" class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="mb-3">
+        <input type="text" name="name" class="form-control" placeholder="Full Name" required>
+      </div>
+      <div class="mb-3">
+        <input type="email" name="email" class="form-control" placeholder="Email Address" required>
+      </div>
+      <div class="mb-3">
+        <input type="text" name="occupation" class="form-control" placeholder="Occupation (Optional)">
+      </div>
+      <div class="mb-3">
+        <select name="type" class="form-select" required>
+          <option value="">Select Donation Type</option>
+          <option value="One-time">One-time</option>
+          <option value="Recurring">Recurring</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <input type="number" name="amount" class="form-control" placeholder="Amount (₦)" id="amountInput" required>
+      </div>
+
+      <div class="account-popup" id="accountDetails">
+        <p><i class="fas fa-university"></i> <strong>Account Name:</strong> HONOURABLE LADIES OF VALUE FOUNDATION</p>
+        <p><i class="fas fa-piggy-bank"></i> <strong>Bank:</strong> Zenith Bank PLC</p>
+        <p><i class="fas fa-hashtag"></i> <strong>Account Number:</strong> <span class="fw-bold text-warning">1212767433</span></p>
+        <p><i class="fas fa-info-circle"></i> After making the payment, click the button below to complete your donation.</p>
+      </div>
+
+      <div class="text-end mt-4">
+        <button type="submit" class="btn btn-primary">Submit Donation</button>
+      </div>
+    </div>
+  </form>
+</section>
+
+<script>
+  const amountInput = document.getElementById('amountInput');
+  const accountBox = document.getElementById('accountDetails');
+
+  amountInput.addEventListener('input', function () {
+    if (this.value && this.value > 0) {
+      accountBox.style.display = 'block';
+    } else {
+      accountBox.style.display = 'none';
+    }
+  });
+</script>
+
+<%- include('../partials/footer') %>

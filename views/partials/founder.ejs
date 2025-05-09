@@ -1,0 +1,44 @@
+<style>
+    /* Background Design on Left Column */
+.background-design {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background-color: #fb8127; /* Pink background color */
+    border-radius: 15px 0 0 15px;  /* Matches the image's curvature */
+    z-index: -1; /* Pushes the design behind the image */
+}
+
+/* Blockquote Styling */
+.blockquote {
+    font-style: italic;
+    border-left: 4px solid #1b479e; /* Navy blue border */
+    padding-left: 20px;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+</style>
+<!-- Founder’s Message Section -->
+<section class="py-5 section-bg">
+    <div class="container">
+        <div class="row align-items-center">
+            <!-- Left Column with Design and Curved Image -->
+            <div class="col-md-6 position-relative">
+                <div class="image-container">
+                    <img src="/images/leaders.jpg" class="img-fluid rounded-image" alt="Theresa Oby Ogoegbunam">
+                </div>
+                <div class="background-design"></div> <!-- Design on the left side -->
+            </div>
+            <!-- Right Column with Text -->
+            <div class="col-md-6">
+                <h2 class="heading-primary text-center mb-4">Founder’s Message</h2>
+
+                <p class="blockquote text-center">"Our mission is to empower the marginalized and uplift those who have been forgotten by society. Through education, support, and healthcare, we help them reclaim their dignity and future."</p>
+                <p class="text-center"><strong>Theresa Oby Ogoegbunam, Founder & CEO</strong></p>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Story | Honourable Ladies of Value Foundation</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+
+.header-section {
+    position: relative;
+    background-image: url('/images/about.jpg'); /* Replace with your header image */
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    padding: 100px 0;
+    text-align: center;
+}
+
+/* Overlay style */
+.header-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.621);  /* Dark overlay, adjust opacity for desired thickness */
+    z-index: 1;  /* Ensure overlay is above the background but below the text */
+}
+
+.header-section h1, .header-section p {
+    position: relative;
+    z-index: 2;  /* Ensure text is above the overlay */
+}
+
+
+        .heading-primary {
+            color: #1b479e; /* Navy Blue */
+        }
+
+        .highlight {
+            color: #fb8127; /* Pink */
+        }
+
+/* Section Background */
+.section-bg {
+    background-color: #f4f4f4; /* Light background color for the section */
+}
+
+/* Curved Image Style */
+.rounded-image {
+    border-radius: 15px;  /* Adjust this to control the curvature of the image */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Optional: adds shadow to the image */
+}
+
+/* Image Container with Design */
+.image-container {
+    position: relative;
+}
+
+/* Background Design on Left Column */
+.background-design {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background-color: #fb8127; /* Pink background color */
+    border-radius: 15px 0 0 15px;  /* Matches the image's curvature */
+    z-index: -1; /* Pushes the design behind the image */
+}
+
+/* Blockquote Styling */
+.blockquote {
+    font-style: italic;
+    border-left: 4px solid #1b479e; /* Navy blue border */
+    padding-left: 20px;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+    </style>
+</head>
+<body>
+    <%- include('../../partials/header') %>
+    <!-- Header Section -->
+    <header class="header-section">
+        <h1 class="display-4">Our Story</h1>
+        <p class="lead">Empowering widows, orphans, and the underprivileged through love, support, and opportunity.</p>
+    </header>
+
+    <!-- The Beginning Section -->
+    <section class="py-5 section-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2 class="heading-primary">The Beginning</h2>
+                    <p>Our journey began with a shared vision to create lasting change, one life at a time. We recognized the challenges facing widows and orphans in Nigeria and sought to provide practical solutions to alleviate their suffering. What started as a small initiative has blossomed into a movement of compassion, impact, and hope.</p>
+                </div>
+                <div class="col-md-6">
+                    <img style="border-radius: 20px;" src="/images/start.png" class="img-fluid" alt="The Beginning">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Impact Section -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="heading-primary text-center">Our Impact So Far</h2>
+            <p class="text-center">Since our inception, we have made significant strides in empowering women, children, and families in need.</p>
+            
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card shadow-sm">
+                        <img src="/images/Empower.jpg" class="card-img-top" alt="Business Empowerment">
+                        <div class="card-body">
+                            <h5 class="card-title">Empowering Women</h5>
+                            <p class="card-text">We have helped countless women rebuild or start their businesses, providing the resources and training needed to succeed.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card shadow-sm">
+                        <img src="/images/orphans.jpg" class="card-img-top" alt="Education for Orphans">
+                        <div class="card-body">
+                            <h5 class="card-title">Education for Orphans</h5>
+                            <p class="card-text">We provide quality educational opportunities to orphaned children, giving them the tools to build a better future.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card shadow-sm">
+                        <img src="/images/honourable30.jpg" class="card-img-top" alt="Healthcare Access">
+                        <div class="card-body">
+                            <h5 class="card-title">Healthcare Access</h5>
+                            <p class="card-text">We ensure families in need have access to vital healthcare, addressing their most urgent medical requirements.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Founder’s Message Section -->
+<section class="py-5 section-bg">
+    <div class="container">
+        <div class="row align-items-center">
+            <!-- Left Column with Design and Curved Image -->
+            <div class="col-md-6 position-relative">
+                <div class="image-container">
+                    <img src="/images/leaders.jpg" class="img-fluid rounded-image" alt="Theresa Oby Ogoegbunam">
+                </div>
+                <div class="background-design"></div> <!-- Design on the left side -->
+            </div>
+            <!-- Right Column with Text -->
+            <div class="col-md-6">
+                <h2 class="heading-primary text-center mb-4">Founder’s Message</h2>
+
+                <p class="blockquote text-center">"Our mission is to empower the marginalized and uplift those who have been forgotten by society. Through education, support, and healthcare, we help them reclaim their dignity and future."</p>
+                <p class="text-center"><strong>Theresa Oby Ogoegbunam, Founder & CEO</strong></p>
+            </div>
+        </div>
+    </div>
+</section>
+<%- include('../../partials/testimonies') %>
+
+
+    <!-- Footer Partial (Include this in your layout.ejs) -->
+    <%- include('../../partials/footer') %>
+

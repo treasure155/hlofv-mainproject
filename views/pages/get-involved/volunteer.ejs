@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        .form-label {
+            color: #1b479e;
+            font-weight: 500;
+        }
+
+        .form-check-label {
+            color: #fb8127;
+            font-weight: 500;
+        }
+
+        .btn-primary {
+            background-color: #1b479e;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #fb8127;
+        }
+
+        .volunteer-section {
+            background-color: #f9f9f9;
+            padding: 80px 0;
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: #fb8127;
+            box-shadow: 0 0 0 0.2rem rgba(251, 129, 39, 0.25);
+        }
+
+        .alert-success, .alert-danger {
+            margin: 30px auto;
+            width: 90%;
+            max-width: 600px;
+        }
+    </style>
+</head>
+<body>
+
+<%- include('../../partials/header') %>
+
+<!-- Hero Section -->
+<section class="volunteer-hero position-relative text-white d-flex align-items-center" style="height: 75vh; background: url('/images/gallery/gallery1.jpg') center center/cover no-repeat;">
+    <div class="overlay position-absolute top-0 start-0 w-100 h-100" style="background-color: rgba(0, 0, 0, 0.6); z-index: 1;"></div>
+    <div class="container position-relative z-2 text-center" data-aos="fade-up" data-aos-duration="1500">
+        <h1 class="display-4 fw-bold">Join Us as a Volunteer</h1>
+        <p class="lead mt-3 mb-4">Be the reason someone smiles today. Help us empower women, support orphans, and uplift communities.</p>
+    </div>
+</section>
+
+<!-- Alerts -->
+<% if (query.success) { %>
+    <div class="alert alert-success text-center">Thank you for volunteering!</div>
+<% } else if (query.error) { %>
+    <div class="alert alert-danger text-center">Something went wrong. Please try again.</div>
+<% } %>
+
+<!-- Volunteer Form Section -->
+<section class="volunteer-section">
+    <div class="container">
+        <form action="/get-involved/volunteer" method="POST" class="row g-4" data-aos="fade-up" data-aos-duration="1200">
+            <div class="col-md-6">
+                <label class="form-label">First Name</label>
+                <input type="text" name="firstName" class="form-control" required>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Last Name</label>
+                <input type="text" name="lastName" class="form-control" required>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">City</label>
+                <input type="text" name="city" class="form-control" required>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Phone Number</label>
+                <input type="text" name="phone" class="form-control" required>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Email (optional)</label>
+                <input type="email" name="email" class="form-control">
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Religion</label>
+                <select name="religion" class="form-select" required>
+                    <% religions.forEach(rel => { %>
+                        <option value="<%= rel %>"><%= rel %></option>
+                    <% }) %>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Age</label>
+                <input type="number" name="age" class="form-control" required>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Occupation</label>
+                <input type="text" name="occupation" class="form-control" required>
+            </div>
+            <div class="col-12">
+                <label class="form-label">Select Program(s) to Volunteer In</label>
+                <div class="form-check">
+                    <% programs.forEach(prog => { %>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="programs" value="<%= prog %>">
+                            <label class="form-check-label"><%= prog %></label>
+                        </div>
+                    <% }) %>
+                </div>
+            </div>
+            <div class="col-12">
+                <label class="form-label">Why do you want to volunteer?</label>
+                <textarea name="reason" class="form-control" rows="3" required></textarea>
+            </div>
+            <div class="col-12">
+                <label class="form-label">Comment (Optional)</label>
+                <textarea name="comment" class="form-control" rows="2"></textarea>
+            </div>
+            <div class="col-12 text-center mt-3">
+                <button type="submit" class="btn btn-primary px-4 py-2">Submit Volunteer Form</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+<%- include('../../partials/blog') %>
+
+<%- include('../../partials/donate') %>
+<%- include('../../partials/footer') %>
+
+<!-- AOS JS -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+
+</body>
+</html>

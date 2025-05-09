@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Vision | Honourable Ladies of Value Foundation</title>
+    <!-- Bootstrap CSS -->
+    <style>
+
+.header-section {
+    position: relative;
+    background-image: url('/images/about.jpg'); /* Replace with your header image */
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    padding: 100px 0;
+    text-align: center;
+}
+
+/* Overlay style */
+.header-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.621);  /* Dark overlay, adjust opacity for desired thickness */
+    z-index: 1;  /* Ensure overlay is above the background but below the text */
+}
+
+.header-section h1, .header-section p {
+    position: relative;
+    z-index: 2;  /* Ensure text is above the overlay */
+}
+
+
+
+    </style>
+</head>
+<body>
+    <%- include('../../partials/header') %>
+
+<!-- Header Section -->
+<header class="header-section">
+        <h1 class="display-4">Our Vision</h1>
+        <p class="lead">Our vision is not just a dream – it is a commitment. A commitment to building a better world for orphans, widows, and women. </p>
+</header>
+
+<!-- Our Vision Section -->
+<section class="py-5" style="background-color: #fb8127;"> <!-- Pink background color -->
+    <div class="container">
+        <div class="row align-items-center">
+            <!-- Left Column with Vision Text -->
+            <div class="col-md-6">
+                <h2 class="heading-primary text-white mb-4">Our Vision</h2>
+                <p class="text-white">At HLOVF, our vision is clear: to create a world where every woman, child, and family has the opportunity to live a fulfilling and dignified life. We envision a future where no child is denied an education, no widow is left without support, and every individual has access to the resources they need to flourish.</p>
+                <p class="text-white">We believe in a world where women are empowered to take control of their futures, where orphans can access the education and care they deserve, and where healthcare is available to all, regardless of their background or circumstances. By focusing on these areas, we aim to break the cycles of poverty, hardship, and marginalization that continue to affect the most vulnerable in society.</p>
+            </div>
+
+            <!-- Right Column with Overlapping Images -->
+            <div class="col-md-6 position-relative">
+                <div class="image-container">
+                    <img style="border-top-right-radius: 20rem; border-bottom-left-radius: 20rem;" src="/images/vision1.jpg" class="img-fluid vision-image front-image" alt="Vision Image 1">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<%- include('../../partials/donate') %>
+
+
+<!-- Footer Partial -->
+<%- include('../../partials/footer') %>
+

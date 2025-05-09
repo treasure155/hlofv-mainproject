@@ -1,0 +1,91 @@
+<%- include('../../partials/header') %>
+
+<style>
+  .hero{
+    background-image: url(/images/blog.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+</style>
+
+<section class="hero bg-primary text-white py-5 text-center">
+  <div style="margin-top: 100px;" class="container">
+    <h1 class="display-4">Our Recent News</h1>
+    <p class="lead">The Blog section of HLOVF provides insightful articles, updates, <br> and stories that highlight the foundation's impact, upcoming events, <br>and the inspiring journeys of those we support. Stay informed and engaged with our mission <br>as we work to empower widows, orphans, and communities through valuable content.
+</p>
+  </div>
+</section>
+<div class="container my-5 mt-5">
+
+  <div class="row">
+    <!-- Main Blog Posts -->
+    <div class="col-md-8">
+      <% if (allPosts && allPosts.length > 0) { %>
+        <div class="row">
+          <% allPosts.forEach(post => { %>
+            <div class="col-md-6 mb-4"> <!-- Adjusted from col-md-4 to col-md-6 for two posts per row -->
+              <div class="card">
+                <img src="/uploads/blogs/<%= post.image || 'default-image.jpg' %>" alt="<%= post.title %>" class="card-img-top">
+                <div class="card-body">
+                  <h5 class="card-title"><%= post.title %></h5>
+                  <p class="card-text"><%= post.excerpt %></p>
+                  <a href="/blog/<%= post._id %>" class="btn btn-primary mt-auto">Read More</a>
+                </div>
+              </div>
+            </div>
+          <% }) %>
+        </div>
+      <% } else { %>
+        <p>No blog posts available at the moment.</p>
+      <% } %>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="col-md-4">
+      <!-- Tags Section -->
+      <div class="mb-4">
+        <h4>Tags</h4>
+        <ul class="list-group">
+          <% if (allTags && allTags.length > 0) { %>
+            <% allTags.forEach(tag => { %>
+              <li class="list-group-item">
+                <a href="/events/blog?tag=<%= tag %>" class="text-decoration-none"><%= tag %></a>
+              </li>
+            <% }) %>
+          <% } else { %>
+            <li class="list-group-item">No tags available.</li>
+          <% } %>
+        </ul>
+      </div>
+
+      <!-- Donation Card -->
+      <div class="card mb-4">
+        <div class="card-body">
+          <h5 class="card-title">Donate Now</h5>
+          <p class="card-text">Help us support orphans and widows in need. Your donation makes a difference!</p>
+          <a href="/donate" class="btn btn-danger">Donate</a>
+        </div>
+      </div>
+
+      <!-- Volunteer Card -->
+      <div class="card mb-4">
+        <div class="card-body">
+          <h5 class="card-title">Volunteer</h5>
+          <p class="card-text">Join our efforts to make a positive impact. Volunteer with us today!</p>
+          <a href="/get-involved/volunteer" class="btn btn-success">Volunteer</a>
+        </div>
+      </div>
+
+      <!-- Contact Us Card -->
+      <div class="card mb-4">
+        <div class="card-body">
+          <h5 class="card-title">Contact Us</h5>
+          <p class="card-text">Have questions? Get in touch with us for more information.</p>
+          <a href="/contact" class="btn btn-primary">Contact</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('../../partials/footer') %>

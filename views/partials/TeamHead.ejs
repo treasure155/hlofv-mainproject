@@ -1,0 +1,37 @@
+<style>
+    .header-section {
+        position: relative;
+        background-image: url('/images/about.jpg'); /* Replace with your header image */
+        background-size: cover;
+        background-position: center;
+        color: white;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        padding: 100px 0;
+        text-align: center;
+    }
+    
+    /* Overlay style */
+    .header-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.621);  /* Dark overlay, adjust opacity for desired thickness */
+        z-index: 1;  /* Ensure overlay is above the background but below the text */
+    }
+    
+    .header-section h1, .header-section p {
+        position: relative;
+        z-index: 2;  /* Ensure text is above the overlay */
+    }
+    </style>
+
+
+<!-- Header Section -->
+<header class="header-section">
+    <h1 class="display-4">Our Team</h1>
+    <p class="lead">Our organization is made up of passionate individuals—volunteers, caregivers, educators, <br> and advocates—who are deeply committed to empowering widows, <br> supporting orphans, and building a better, compassionate society.
+        </p>
+</header>

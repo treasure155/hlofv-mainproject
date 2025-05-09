@@ -1,0 +1,22 @@
+<div class="container">
+<div class="row">
+    <% if (recentPosts && recentPosts.length > 0) { %>
+      <% recentPosts.forEach(post => { %>
+        <div class="col-md-4 mb-4 post-card">
+          <div class="card h-100">
+            <img src="/uploads/blogs/<%= post.image || 'default-image.jpg' %>" class="card-img-top" alt="<%= post.title %>">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title"><%= post.title %></h5>
+              <p class="card-text">
+                <%= post.excerpt ? post.excerpt.substring(0, 20) + '...' : 'No excerpt available.' %>
+              </p>
+              <a href="/blog/<%= post._id %>" class="btn btn-primary mt-auto">Read More</a>
+            </div>
+          </div>
+        </div>
+      <% }); %>
+    <% } else { %>
+      <p>No recent posts available.</p>
+    <% } %>
+  </div>
+</div>

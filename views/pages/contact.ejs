@@ -1,0 +1,112 @@
+<%- include('../partials/header') %>
+
+<style>
+  .hero{
+    background-image: url(/images/blog.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+</style>
+
+<!-- Hero Section -->
+<section class="hero text-white text-center" style="background-color: #1b479e; padding: 100px 0;">
+  <div class="container">
+    <h1 class="display-4">Contact Us</h1>
+    <p class="lead">We’d love to hear from you. Reach out with any questions, suggestions, or support.</p>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<div class="container py-5">
+  <div class="row">
+    <!-- Contact Form -->
+    <div class="col-md-6 mb-4">
+      <h2 class="text-uppercase" style="color: #1b479e;">Send Us a Message</h2>
+      <form action="/contact" method="POST">
+        <div class="mb-3">
+          <label for="fullName" class="form-label" style="color: deeppink;">Full Name</label>
+          <input type="text" class="form-control" id="fullName" name="fullName" required>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label" style="color: deeppink;">Email Address</label>
+          <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+        <div class="mb-3">
+          <label for="phone" class="form-label" style="color: deeppink;">Phone Number</label>
+          <input type="text" class="form-control" id="phone" name="phone" required>
+        </div>
+        <div class="mb-3">
+          <label for="message" class="form-label" style="color: deeppink;">Message</label>
+          <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn" style="background-color: deeppink; color: white;">Send Message</button>
+      </form>
+    </div>
+
+    <!-- Contact Information Accordion -->
+    <div style="margin-top: 100px;" class="col-md-6">
+      <h2 class="text-uppercase" style="color: #1b479e;">Our Contact Information</h2>
+      <div class="accordion" id="contactInfoAccordion">
+        <!-- Phone -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingPhone">
+            <button class="accordion-button" style="background-color: deeppink; color: rgb(5, 4, 46);" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePhone" aria-expanded="true">
+              <i class="bi bi-telephone-fill me-2"></i> Phone
+            </button>
+          </h2>
+          <div id="collapsePhone" class="accordion-collapse collapse show">
+            <div class="accordion-body bg-light">
+              <p><strong>Phone:</strong> +2348037769039</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingEmail">
+            <button class="accordion-button" style="background-color: #020b1e; color: white;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEmail">
+              <i class="bi bi-envelope-fill me-2"></i> Email
+            </button>
+          </h2>
+          <div id="collapseEmail" class="accordion-collapse collapse">
+            <div class="accordion-body bg-light">
+              <p><strong>Email:</strong> honourableladies1@gmail.com</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Address -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingAddress">
+            <button class="accordion-button" style="background-color: deeppink; color: white;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAddress">
+              <i class="bi bi-geo-alt-fill me-2"></i> Address
+            </button>
+          </h2>
+          <div id="collapseAddress" class="accordion-collapse collapse">
+            <div class="accordion-body bg-light">
+              <p><strong>Address:</strong> No. 5 Gabriel Orji Close, Graceland Otakpo, 3-3 Onitsha, Anambra State</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Map -->
+      
+  </div>
+</div>
+
+<h3 class="mt-4" style="color: #1b479e;">Our Location</h3>
+<div style="width: 100%; height: 300px; margin-top: 10px; border-radius: 20px;">
+  <iframe
+    src="https://www.google.com/maps?q=No. 5 Gabriel Orji Close, Graceland Otakpo, 3-3 Onitsha, Anambra State, Nigeria&output=embed"
+    width="100%"
+    height="100%"
+    style="border:0;"
+    allowfullscreen=""
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</div>
+</div>
+<%- include('../partials/donate') %>
+<%- include('../partials/footer') %>

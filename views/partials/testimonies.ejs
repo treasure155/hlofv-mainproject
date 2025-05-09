@@ -1,0 +1,112 @@
+<!-- Testimonial Carousel -->
+<div class="container my-5">
+  <h2 class="text-center mb-4 fw-bold" style="color: #1b1b6f;">What People Are Saying</h2>
+
+  <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-pause="false">
+    <div class="carousel-inner">
+
+      <!-- Slide 1 -->
+      <div class="carousel-item active">
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="card shadow-lg h-100 border-0 p-4">
+              <div class="card-body">
+                <i class="fas fa-quote-left fa-2x mb-3" style="color: #ff5aa1;"></i>
+                <p class="card-text">"The empowerment programs at HLOVF helped me regain my confidence and skills. I was able to start my own small business, which now supports my family."</p>
+                <h6 class="mt-3 fw-bold" style="color: #1b1b6f;">— Chika <span class="text-muted small">, Widow and Entrepreneur</span></h6>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card shadow-lg h-100 border-0 p-4">
+              <div class="card-body">
+                <i class="fas fa-quote-left fa-2x mb-3" style="color: #ff5aa1;"></i>
+                <p class="card-text">"Thanks to the education support I received through HLOVF, I am now attending university. I now have the opportunity to fulfill my dreams of becoming a doctor."</p>
+                <h6 class="mt-3 fw-bold" style="color: #1b1b6f;">— Adaeze <span class="text-muted small">, Former Orphan</span></h6>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card shadow-lg h-100 border-0 p-4">
+              <div class="card-body">
+                <i class="fas fa-quote-left fa-2x mb-3" style="color: #ff5aa1;"></i>
+                <p class="card-text">"Before joining the health program, I struggled with medical care. After HLOVF’s help, I feel healthier and more hopeful about my future."</p>
+                <h6 class="mt-3 fw-bold" style="color: #1b1b6f;">— Emeka <span class="text-muted small">, Single Father</span></h6>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="carousel-item">
+        <div class="row g-4">
+          <% const moreTestimonials = [
+            {
+              quote: "HLOVF’s empowerment program gave me more than a skill — it gave me sisterhood and support.",
+              name: "Mariam",
+              role: "Empowered Widow"
+            },
+            {
+              quote: "The scholarship I received helped me finish school. I can now dream big again.",
+              name: "David",
+              role: "High School Graduate"
+            },
+            {
+              quote: "I received medical care I never thought possible through HLOVF. Thank you!",
+              name: "Patricia",
+              role: "Community Member"
+            }
+          ]; %>
+          <% moreTestimonials.forEach(t => { %>
+            <div class="col-md-4">
+              <div class="card shadow-lg h-100 border-0 p-4">
+                <div class="card-body">
+                  <i class="fas fa-quote-left fa-2x mb-3" style="color: #ff5aa1;"></i>
+                  <p class="card-text"><%= t.quote %></p>
+                  <h6 class="mt-3 fw-bold" style="color: #1b1b6f;">— <%= t.name %> <span class="text-muted small">, <%= t.role %></span></h6>
+                </div>
+              </div>
+            </div>
+          <% }); %>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="carousel-item">
+        <div class="row g-4">
+          <% const lastTestimonials = [
+            {
+              quote: "I’ve been in the program for over a year — it has truly transformed my life.",
+              name: "Ngozi",
+              role: "Widowed Mother"
+            },
+            {
+              quote: "HLOVF gave me everything I needed to succeed in school. I feel so proud.",
+              name: "Chinonso",
+              role: "Orphaned Student"
+            },
+            {
+              quote: "With their scholarship, I can now pursue a better future with hope.",
+              name: "Jonathan",
+              role: "Scholarship Recipient"
+            }
+          ]; %>
+          <% lastTestimonials.forEach(t => { %>
+            <div class="col-md-4">
+              <div class="card shadow-lg h-100 border-0 p-4">
+                <div class="card-body">
+                  <i class="fas fa-quote-left fa-2x mb-3" style="color: #ff5aa1;"></i>
+                  <p class="card-text"><%= t.quote %></p>
+                  <h6 class="mt-3 fw-bold" style="color: #1b1b6f;">— <%= t.name %> <span class="text-muted small">, <%= t.role %></span></h6>
+                </div>
+              </div>
+            </div>
+          <% }); %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+

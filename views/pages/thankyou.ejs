@@ -1,0 +1,30 @@
+<style>
+    .hero {
+  background: linear-gradient(to right, #1b479e, #fb8127);
+  padding: 60px 0;
+  color: white;
+}
+
+</style>
+
+<!-- Header Partial -->
+<%- include('../partials/header') %>
+
+<!-- Hero Section -->
+<section class="hero bg-primary text-white text-center py-5">
+  <div class="container">
+    <h1 style="padding-top: 50px;" class="display-3">Thank You!</h1>
+    <p class="lead">We appreciate your message and support.</p>
+  </div>
+</section>
+
+<!-- Thank You Message -->
+<div class="container text-center mt-5">
+  <h2 class="display-4">Dear <%= fullName %>,</h2>
+  <p class="lead">
+    Your message has been successfully sent. We’ll review it and respond as soon as possible.
+  </p>
+</div>
+
+<!-- Footer Partial -->
+<%- include('../partials/footer') %>

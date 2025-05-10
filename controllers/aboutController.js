@@ -9,22 +9,8 @@ exports.renderOurStoryPage = (req, res) => {
 
 // Controller for rendering the about pages
 exports.renderOurTeamPage = (req, res) => {
-    const galleryDir = path.join(__dirname, '..', 'public', 'images', 'gallery');
-    
-    // Read files in the gallery directory
-    fs.readdir(galleryDir, (err, files) => {
-      if (err) {
-        console.error('Error reading gallery folder:', err);
-        return res.render('pages/about/team', { title: 'Our Team', galleryImages: [] });
-      }
-  
-      // Filter only image files (optional)
-      const imageFiles = files.filter(file => /\.(jpg|jpeg|png|gif)$/i.test(file));
-  
-      // Render the page with the gallery images
-      res.render('pages/about/team', { title: 'Our Team', galleryImages: imageFiles });
-    });
-  };
+  res.render('pages/about/team', { title: 'Our Team' });
+};
 
 exports.renderOurVisionPage = (req, res) => {
     res.render('pages/about/vision');  

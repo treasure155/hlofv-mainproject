@@ -3,61 +3,6 @@
 
 <%- include('../../partials/founder') %>
 
-<style>
-    .scroll-carousel {
-      overflow: hidden;
-      position: relative;
-    }
-    
-    .scroll-track {
-      display: flex;
-      width: max-content;
-      animation: scroll-left 80s linear infinite;
-    }
-    
-    .scroll-item {
-      flex: 0 0 auto;
-      padding: 0 10px;
-    }
-    
-    .scroll-item img {
-      height: 150px;
-      width: auto;
-      object-fit: cover;
-      border-radius: 10px;
-    }
-    
-    @keyframes scroll-left {
-      0% {
-        transform: translateX(0%);
-      }
-      100% {
-        transform: translateX(-100%);
-      }
-    }
-    
-    </style>
-    
-    <section class="py-5" style="background-color: #ffe0f0;">
-        <div class="container">
-          <h2 class="text-center mb-4">Our Impact in Pictures</h2>
-          <div class="scroll-carousel">
-            <div class="scroll-track">
-              <% galleryImages.forEach(image => { %>
-                <div class="scroll-item">
-                  <img src="/images/gallery/<%= image %>" alt="Impact Image">
-                </div>
-              <% }) %>
-              <% galleryImages.forEach(image => { %>
-                <div class="scroll-item">
-                  <img src="/images/gallery/<%= image %>" alt="Impact Image">
-                </div>
-              <% }) %>
-            </div>
-          </div>
-        </div>
-      </section>
-      
 
 <%- include('../../partials/testimonies') %>
 <%- include('../../partials/donate') %>

@@ -1,98 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Admin Dashboard | HLOVF</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-  <style>
-    body {
-      display: flex;
-      min-height: 100vh;
-    }
-    .sidebar {
-      width: 250px;
-      background-color: #1b479e;
-      color: white;
-      flex-shrink: 0;
-    }
-    .sidebar a {
-      color: white;
-      padding: 10px 15px;
-      display: block;
-      text-decoration: none;
-    }
-    .sidebar a:hover,
-    .sidebar a.active {
-      background-color: #fb8127;
-      color: white;
-    }
-    .main-content {
-      flex-grow: 1;
-      padding: 20px;
-      background-color: #f8f9fa;
-    }
-    table th, table td {
-      vertical-align: middle;
-    }
-  </style>
-</head>
-<body>
+<%- include('../../partials/headerAdmin') %>
 
-<!-- Sidebar -->
-<div class="sidebar">
-  <h4 class="text-center py-3">Admin Panel</h4>
-  <a href="/admin/dashboard" class="active"><i class="bi bi-speedometer2"></i> Dashboard</a>
-  <a href="/admin/create-post"><i class="bi bi-pencil-square"></i> Create Post</a>
-  <a href="/admin/manage-posts"><i class="bi bi-card-list"></i> Manage Posts</a>
-  <a href="/" target="_blank"><i class="bi bi-house-door"></i> View Website</a>
-  <a href="/admin/logout" class="text-danger"><i class="bi bi-box-arrow-right"></i> Logout</a>
-</div>
 
 <!-- Main Content -->
-<div class="main-content container">
-  <h2 class="mb-4" style="font-size: 2.5rem; font-weight: bold; color: #1b479e;">Create New Blog Post</h2>
-  
+<div class="main-content container create-post-page">
+  <h2 class="mb-4 create-post-title">Create New Blog Post</h2>
+
   <form action="/admin/create-post" method="POST" enctype="multipart/form-data">
-    
     <!-- Title -->
     <div class="mb-4">
-      <label for="title" class="form-label" style="font-weight: bold;">Title</label>
-      <input type="text" name="title" id="title" class="form-control" required style="padding: 10px; font-size: 1.1rem;">
+      <label for="title" class="form-label create-post-label">Title</label>
+      <input type="text" name="title" id="title" class="form-control create-post-input" required>
     </div>
 
     <!-- Excerpt -->
     <div class="mb-4">
-      <label for="excerpt" class="form-label" style="font-weight: bold;">Excerpt</label>
-      <textarea name="excerpt" id="excerpt" rows="3" class="form-control" placeholder="Short summary..." required style="padding: 10px; font-size: 1.1rem;"></textarea>
+      <label for="excerpt" class="form-label create-post-label">Excerpt</label>
+      <textarea name="excerpt" id="excerpt" rows="3" class="form-control create-post-input" placeholder="Short summary..." required></textarea>
     </div>
 
     <!-- Tags -->
     <div class="mb-4">
-      <label for="tags" class="form-label" style="font-weight: bold;">Tags (comma-separated)</label>
-      <input type="text" name="tags" id="tags" class="form-control" placeholder="e.g., technology, education, programming" style="padding: 10px; font-size: 1.1rem;">
+      <label for="tags" class="form-label create-post-label">Tags (comma-separated)</label>
+      <input type="text" name="tags" id="tags" class="form-control create-post-input" placeholder="e.g., technology, education, programming">
     </div>
 
     <!-- Image -->
     <div class="mb-4">
-      <label for="image" class="form-label" style="font-weight: bold;">Upload Image</label>
+      <label for="image" class="form-label create-post-label">Upload Image</label>
       <input type="file" name="image" id="image" class="form-control" accept="image/*" required>
     </div>
 
     <!-- Body -->
     <div class="mb-4">
-      <label for="body" class="form-label" style="font-weight: bold;">Content</label>
-      <textarea name="body" id="body" rows="8" class="form-control" required style="padding: 10px; font-size: 1.1rem;"></textarea>
+      <label for="body" class="form-label create-post-label">Content</label>
+      <textarea name="body" id="body" rows="8" class="form-control create-post-input" required></textarea>
     </div>
 
     <!-- Submit -->
-    <button type="submit" class="btn btn-success mt-3" style="font-size: 1.1rem; padding: 10px 20px; background-color: #1b479e; border-color: #1b479e;">
+    <button type="submit" class="btn btn-success create-post-submit">
       <i class="bi bi-upload"></i> Publish
     </button>
   </form>
 </div>
 
-
-
-</body>
-</html>
+<%- include('../../partials/footerAdmin') %>

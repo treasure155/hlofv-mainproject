@@ -9,78 +9,16 @@ const path = require('path');
 const Contact = require('../models/Contact'); 
 const mainController = require('../controllers/mainController');
 const Subscriber = require('../models/Subscriber');
-
-
-
+const Donation = require('../models/Donation');
+const auth = require('../middlewares/auth');
 
 // Admin Login Routes
 router.get('/login', adminLoginController.showLoginForm);
 router.post('/login', adminLoginController.login);
 router.get('/logout', adminLoginController.logout);
 
-router.get('/subscribers/download', mainController.downloadSubscribersPDF);
-
-
-// Middleware to ensure the user is logged in as an admin
-function isAdmin(req, res, next) {
-  if (req.session && req.session.isAdmin) {
-    return next(); // User is logged in as admin, continue to the next middleware
-  } else {
-    res.redirect('/admin/login'); // Redirect to login if not authenticated
-  }
-}
-
-const Donation = require('../models/Donation'); // Add this at the top
-
-router.get('/dashboard', isAdmin, async (req, res) => {
-  try {
-    // Blog stats
-    const totalPosts = await Blog.countDocuments();
-    const publishedPosts = await Blog.countDocuments({ published: true });
-    const draftPosts = await Blog.countDocuments({ published: false });
-
-    // Contact messages
-    const contactCount = await Contact.countDocuments();
-
-    // Volunteer stats
-    const totalVolunteers = await Volunteer.countDocuments();
-    const activeVolunteers = await Volunteer.countDocuments({ status: 'Active' });
-
-    // Donation stats
-    const totalDonations = await Donation.countDocuments();
-    const totalAmount = await Donation.aggregate([
-      { $group: { _id: null, total: { $sum: "$amount" } } }
-    ]);
-    const totalAmountDonated = totalAmount[0]?.total || 0;
-    const donations = await Donation.find().sort({ createdAt: -1 }).limit(10);
-
-    // Newsletter Subscribers
-    const subscribers = await Subscriber.find().sort({ subscribedAt: -1 });
-
-    // Render dashboard with all stats and data
-    res.render('pages/admin/dashboard', {
-      title: 'Admin Dashboard',
-      totalPosts,
-      publishedPosts,
-      draftPosts,
-      totalVolunteers,
-      activeVolunteers,
-      contactCount,
-      totalDonations,
-      totalAmountDonated,
-      donations,
-      subscribers 
-    });
-  } catch (err) {
-    console.error('Dashboard error:', err);
-    res.status(500).send("Server Error");
-  }
-});
-
-
-
 // Admin Route to download a volunteer's details as PDF
-router.get('/download-volunteer/:id', isAdmin, async (req, res) => {
+router.get('/download-volunteer/:id', auth.isAdmin, async (req, res) => {
   try {
     const volunteer = await Volunteer.findById(req.params.id);
     if (!volunteer) {
@@ -122,7 +60,7 @@ router.get('/download-volunteer/:id', isAdmin, async (req, res) => {
 });
 
 // Admin Route for managing volunteers and displaying recent volunteers
-router.get('/volunteers', isAdmin, async (req, res) => {
+router.get('/volunteers', auth.isAdmin, async (req, res) => {
   try {
     // Fetch recent volunteers from the database
     const recentVolunteers = await Volunteer.find().sort({ createdAt: -1 }).limit(10); // Adjust limit as needed
@@ -136,7 +74,7 @@ router.get('/volunteers', isAdmin, async (req, res) => {
 });
 
 // Admin Route to download all volunteers of a specific program as PDF
-router.get('/download-volunteers-by-program/:program', isAdmin, async (req, res) => {
+router.get('/download-volunteers-by-program/:program', auth.isAdmin, async (req, res) => {
   try {
     // Find volunteers by program
     const volunteers = await Volunteer.find({ programs: req.params.program });
@@ -179,8 +117,8 @@ router.get('/download-volunteers-by-program/:program', isAdmin, async (req, res)
   }
 });
 
-
-router.get('/contacts', isAdmin, async (req, res) => {
+// Admin Route for contacts management with pagination and search
+router.get('/contacts', auth.isAdmin, async (req, res) => {
   try {
     const perPage = 10;
     const page = parseInt(req.query.page) || 1;
@@ -213,5 +151,54 @@ router.get('/contacts', isAdmin, async (req, res) => {
     res.status(500).send('Server Error');
   }
 });
+
+// Admin Route for dashboard statistics
+router.get('/dashboard', auth.isAdmin, async (req, res) => {
+  try {
+    // Blog stats
+    const totalPosts = await Blog.countDocuments();
+    const publishedPosts = await Blog.countDocuments({ published: true });
+    const draftPosts = await Blog.countDocuments({ published: false });
+
+    // Contact messages
+    const contactCount = await Contact.countDocuments();
+
+    // Volunteer stats
+    const totalVolunteers = await Volunteer.countDocuments();
+    const activeVolunteers = await Volunteer.countDocuments({ status: 'Active' });
+
+    // Donation stats
+    const totalDonations = await Donation.countDocuments();
+    const totalAmount = await Donation.aggregate([
+      { $group: { _id: null, total: { $sum: "$amount" } } }
+    ]);
+    const totalAmountDonated = totalAmount[0]?.total || 0;
+    const donations = await Donation.find().sort({ createdAt: -1 }).limit(10);
+
+    // Newsletter Subscribers
+    const subscribers = await Subscriber.find().sort({ subscribedAt: -1 });
+
+    // Render dashboard with all stats and data
+    res.render('pages/admin/dashboard', {
+      title: 'Admin Dashboard',
+      totalPosts,
+      publishedPosts,
+      draftPosts,
+      totalVolunteers,
+      activeVolunteers,
+      contactCount,
+      totalDonations,
+      totalAmountDonated,
+      donations,
+      subscribers
+    });
+  } catch (err) {
+    console.error('Dashboard error:', err);
+    res.status(500).send("Server Error");
+  }
+});
+
+// Admin Route to download a list of all subscribers as PDF
+router.get('/subscribers/download', mainController.downloadSubscribersPDF);
 
 module.exports = router;
